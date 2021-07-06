@@ -1,3 +1,4 @@
-[submodule "themes/lekh"]
-	path = themes/lekh
-	url = https://github.com/ba11b0y/lekh.git
+[submodule "lekh"]
+	path = lekh
+	url = git@github.com:MtShadow/lekh.git
+	branch = remove-posts-from-index
