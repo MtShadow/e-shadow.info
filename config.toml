@@ -1,0 +1,20 @@
+baseURL = "https://e-shadow.info/"
+languageCode = "ja-jp"
+title = "e-shadow.info"
+theme = "lekh"
+
+[params]
+Name = "e-shadow.info"
+About = ""
+Email = ""
+Resume = "" # Add the filename with file extension.
+PostLimit = 4 # Sets the number of posts to display on the front page
+GoatCounterCode = ""
+
+[[params.profiles]]
+name = "GitHub"
+url = "https://github.com/MtShadow"
+
+[[params.profiles]]
+name = "Twitter"
+url = "https://twitter.com/shaman_univ"
