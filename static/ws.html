@@ -16,18 +16,28 @@
             justify-content: center;
             align-items: center;
         }
-        /* 読み込み直後に薄く表示し、すぐに消えるガイドテキスト */
+        /* 読み込み直後に表示し、すぐに消えるガイドテキスト */
         #guide-text {
-            color: #e0e0e0;
+            color: #999999; /* 文字色を少し濃いグレーに変更 */
             font-family: sans-serif;
-            font-size: 14px;
+            font-size: 15px;
             letter-spacing: 0.05em;
+            text-align: center; /* 2行になるため中央揃えを追加 */
+            line-height: 1.6;
             transition: opacity 2s ease-in-out;
+        }
+        /* 英語テキスト用のスタイル（日本語より少し小さく・薄くしてバランスを調整） */
+        .en-text {
+            font-size: 13px;
+            color: #aaaaaa;
         }
     </style>
 </head>
 <body>
-    <div id="guide-text">フィルムを画面に重ねてご覧ください</div>
+    <div id="guide-text">
+        フィルムを画面に重ねてご覧ください<br>
+        <span class="en-text">Place the film on the screen</span>
+    </div>
 
     <script>
         // 3秒後にガイドテキストをフェードアウトして完全な白画面にする
@@ -58,4 +68,3 @@
     </script>
 </body>
 </html>
-
