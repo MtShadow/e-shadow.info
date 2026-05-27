@@ -16,5 +16,5 @@ name = "GitHub"
 url = "https://github.com/MtShadow"
 
 [[params.profiles]]
-name = "Twitter"
-url = "https://twitter.com/shaman_east"
+name = "Misskey"
+url = "https://misskey.io/@mtshadow"
