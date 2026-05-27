@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Illuminator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 読み込み直後に表示し、すぐに消えるガイドテキスト */
+        #guide-text {
+            color: #999999; /* 文字色を少し濃いグレーに変更 */
+            font-family: sans-serif;
+            font-size: 15px;
+            letter-spacing: 0.05em;
+            text-align: center; /* 2行になるため中央揃えを追加 */
+            line-height: 1.6;
+            transition: opacity 2s ease-in-out;
+        }
+        /* 英語テキスト用のスタイル（日本語より少し小さく・薄くしてバランスを調整） */
+        .en-text {
+            font-size: 13px;
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <div id="guide-text">
+        フィルムを画面に重ねてご覧ください<br>
+        <span class="en-text">Place the film on the screen</span>
+    </div>
+
+    <script>
+        // 3秒後にガイドテキストをフェードアウトして完全な白画面にする
+        setTimeout(() => {
+            const guide = document.getElementById('guide-text');
+            if(guide) guide.style.opacity = '0';
+        }, 3000);
+
+        // 画面がスリープするのを防ぐ (Screen Wake Lock API)
+        let wakeLock = null;
+        const requestWakeLock = async () => {
+            try {
+                if ('wakeLock' in navigator) {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                }
+            } catch (err) {
+                console.warn(`Wake Lock APIがサポートされていないか、エラーが発生しました: ${err.message}`);
+            }
+        };
+
+        // ページ読み込み時と、タブが再びアクティブになった時にスリープ防止をリクエスト
+        requestWakeLock();
+        document.addEventListener('visibilitychange', () => {
+            if (wakeLock !== null && document.visibilityState === 'visible') {
+                requestWakeLock();
+            }
+        });
+    </script>
+</body>
+</html>
